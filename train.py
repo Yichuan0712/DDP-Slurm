@@ -15,7 +15,7 @@ def main():
     torch.cuda.set_device(local_rank)
 
     print(f"Rank {dist.get_rank()} running on GPU {local_rank}")
-    print(f"World size: {dist.get_world_size()}")
+    # print(f"World size: {dist.get_world_size()}")
 
     model = ToyModel().to(local_rank)
     model = DDP(model, device_ids=[local_rank])
@@ -27,7 +27,7 @@ def main():
     criterion = nn.CrossEntropyLoss()
     optimizer = optim.SGD(model.parameters(), lr=0.01)
 
-    for epoch in range(5):
+    for epoch in range(10):
         sampler.set_epoch(epoch)
         for data, labels in dataloader:
             data, labels = data.to(local_rank), labels.to(local_rank)
