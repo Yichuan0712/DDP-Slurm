@@ -14,6 +14,9 @@ def main():
     local_rank = int(os.environ["LOCAL_RANK"])
     torch.cuda.set_device(local_rank)
 
+    print(f"Rank {dist.get_rank()} running on GPU {local_rank}")
+    print(f"World size: {dist.get_world_size()}")
+
     model = ToyModel().to(local_rank)
     model = DDP(model, device_ids=[local_rank])
 
