@@ -17,4 +17,4 @@ export TORCH_HOME=/home/yz3qt/data/torch_cache/
 export HF_HOME=/home/yz3qt/data/transformers_cache/
 
 # 使用 srun 启动 torchrun，nproc_per_node 与 GPU 数量匹配
-srun torchrun --nproc_per_node=2 --master_port=12345 train.py
+srun torchrun --nproc_per_node=2 train.py
